@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using RealEstate.Infra.Database;
 
-namespace RealEstate.Infra.Repositories;
+namespace RealEstate.Infra.Database.Repository;
 
 public class Repository<TEntity> : IRepository<TEntity>
     where TEntity : class

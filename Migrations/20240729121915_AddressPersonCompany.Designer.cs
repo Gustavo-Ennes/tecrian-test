@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealEstate.Infra.Database;
 
@@ -11,9 +12,11 @@ using RealEstate.Infra.Database;
 namespace RealEstate.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240729121915_AddressPersonCompany")]
+    partial class AddressPersonCompany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +66,7 @@ namespace RealEstate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Address", (string)null);
+                    b.ToTable("Address");
                 });
 
             modelBuilder.Entity("RealEstate.Domain.Entities.Company", b =>
@@ -102,7 +105,7 @@ namespace RealEstate.Migrations
 
                     b.HasIndex("RepresentantId");
 
-                    b.ToTable("Company", (string)null);
+                    b.ToTable("Company");
                 });
 
             modelBuilder.Entity("RealEstate.Domain.Entities.Document", b =>
@@ -133,7 +136,7 @@ namespace RealEstate.Migrations
 
                     b.HasIndex("TenantId");
 
-                    b.ToTable("Document", (string)null);
+                    b.ToTable("Document");
                 });
 
             modelBuilder.Entity("RealEstate.Domain.Entities.Person", b =>
@@ -163,7 +166,7 @@ namespace RealEstate.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Person", (string)null);
+                    b.ToTable("Person");
                 });
 
             modelBuilder.Entity("RealEstate.Domain.Entities.Tenant", b =>
@@ -199,7 +202,7 @@ namespace RealEstate.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("Tenant", (string)null);
+                    b.ToTable("Tenant");
                 });
 
             modelBuilder.Entity("RealEstate.Domain.Entities.Company", b =>

@@ -1,4 +1,4 @@
-using RealEstate.Config;
+using RealEstate.ConfigExtension;
 
 var builder = WebApplication.CreateBuilder(args);
 

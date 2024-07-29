@@ -1,4 +1,4 @@
-namespace RealEstate.Infra.Repositories;
+namespace RealEstate.Infra.Database.Repository;
 
 public interface IRepository<TEntity>
     where TEntity : class

@@ -1,4 +1,5 @@
 using RealEstate.Api.Dtos;
+using RealEstate.Utils;
 
 namespace RealEstate.Domain.Entities;
 
@@ -26,4 +27,7 @@ public class NaturalTenant : TenantBase
 
         return this;
     }
+
+    public override string ToString() => 
+        this.SerializeIndented();
 }

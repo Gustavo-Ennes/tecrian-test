@@ -1,27 +1,27 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Api.Dtos;
-using RealEstate.Api.Validators.NaturalTenant;
+using RealEstate.Api.Validators.LegalTenant;
 using RealEstate.App.Services;
 using RealEstate.Domain.Entities;
 
 namespace RealEstate.Api.Routes;
 
 [ApiController]
-[Route("api/tenants")]
-public class NaturalTenantsController(INaturalTenantService tenantService) : ControllerBase
+[Route("api/tenants/legal")]
+public class LegalTenantsController(ILegalTenantService tenantService) : ControllerBase
 {
-    private readonly INaturalTenantService _tenantService = tenantService;
+    private readonly ILegalTenantService _tenantService = tenantService;
 
     [HttpGet]
-    public async Task<ActionResult<List<NaturalTenant>>> GetTenants()
+    public async Task<ActionResult<List<LegalTenant>>> GetTenants()
     {
         var tenants = await _tenantService.GetTenantsAsync();
         return Ok(tenants);
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<NaturalTenant?>> GetTenant(int id)
+    public async Task<ActionResult<LegalTenant?>> GetTenant(int id)
     {
         var tenant = await _tenantService.GetTenantByIdAsync(id);
         if (tenant == null)
@@ -31,9 +31,9 @@ public class NaturalTenantsController(INaturalTenantService tenantService) : Con
     }
 
     [HttpPost]
-    public async Task<ActionResult<NaturalTenant>> CreateTenant(CreateNaturalTenantDto dto)
+    public async Task<ActionResult<LegalTenant>> CreateTenant(CreateLegalTenantDto dto)
     {
-        var validator = new NaturalTenantCreationValidator();
+        var validator = new LegalTenantCreationValidator();
         validator.ValidateAndThrow(dto);
 
         var createdTenant = await _tenantService.CreateTenantAsync(dto);
@@ -41,10 +41,11 @@ public class NaturalTenantsController(INaturalTenantService tenantService) : Con
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateTenant(UpdateNaturalTenantDto dto)
+    public async Task<IActionResult> UpdateTenant(UpdateLegalTenantDto dto)
     {
-        var validator = new NaturalTenantUpdateValidator();
+        var validator = new LegalTenantUpdateValidator();
         validator.ValidateAndThrow(dto);
+
         await _tenantService.UpdateTenantAsync(dto);
         return Ok(true);
     }

@@ -1,4 +1,5 @@
 using RealEstate.Api.Dtos;
+using RealEstate.Utils;
 
 namespace RealEstate.Domain.Entities;
 
@@ -41,8 +42,7 @@ public class Address
         return this;
     }
 
-    public override string ToString()
-    {
-        return $"{Street}, {Number} - {Neighborhood}, {City}/{State}, {PostalCode} | {Country}";
-    }
+
+    public override string ToString() => 
+        this.SerializeIndented();
 }

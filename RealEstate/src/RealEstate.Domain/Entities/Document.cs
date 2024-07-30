@@ -1,4 +1,5 @@
 using RealEstate.Domain.Enums;
+using RealEstate.Utils;
 
 namespace RealEstate.Domain.Entities;
 
@@ -10,4 +11,8 @@ public class Document
     public int OwnerId { get; set; }
     public string Path { get; set; } = string.Empty;
     public DateTime CreationDate { get; set; }
+
+
+    public override string ToString() => 
+        this.SerializeIndented();
 }

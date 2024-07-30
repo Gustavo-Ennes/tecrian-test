@@ -1,4 +1,5 @@
 using RealEstate.Api.Dtos;
+using RealEstate.Utils;
 
 namespace RealEstate.Domain.Entities;
 
@@ -24,7 +25,10 @@ public class LegalTenant : TenantBase
       if(dto.Company != null)
         Company = Company.UpdateFromDto(dto.Company) ?? Company;
       
-      return this;
-      
+      return this;      
     }
+
+
+    public override string ToString() => 
+        this.SerializeIndented();
 }

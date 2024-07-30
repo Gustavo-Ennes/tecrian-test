@@ -1,4 +1,5 @@
 using RealEstate.Api.Dtos;
+using RealEstate.Utils;
 
 namespace RealEstate.Domain.Entities;
 
@@ -37,4 +38,8 @@ public class Company
 
         return this;
     }
+
+
+    public override string ToString() => 
+        this.SerializeIndented();
 }

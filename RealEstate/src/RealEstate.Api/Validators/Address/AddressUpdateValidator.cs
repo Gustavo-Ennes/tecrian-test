@@ -5,9 +5,10 @@ using RealEstate.Api.Validators.Functions;
 
 namespace RealEstate.Api.Validators.Address;
 
-public class AddressUpdateValidator : BaseValidator<AddressUpdateDto>
+public class AddressUpdateValidator : UpdateBaseValidator<UpdateAddressDto>
 {
     public AddressUpdateValidator()
+        : base()
     {
         RuleFor(address => address.Street)
             .NotEmpty()

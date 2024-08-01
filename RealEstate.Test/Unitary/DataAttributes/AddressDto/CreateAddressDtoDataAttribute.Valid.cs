@@ -2,9 +2,9 @@ using System.Reflection;
 using RealEstate.Api.Dtos;
 using Xunit.Sdk;
 
-namespace RealEstate.Test.Unitary.Domain.DataAttributes;
+namespace RealEstate.Test.Unitary.DataAttributes.AddressDto;
 
-public class AddressDtoTestDataAttribute : DataAttribute
+public class CreateAddressDtoDataAttribute_Valid : DataAttribute
 {
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
@@ -12,7 +12,7 @@ public class AddressDtoTestDataAttribute : DataAttribute
         yield return new object[] { GetAddressWithoutComplement() };
     }
 
-    public static AddressCreateDto GetAddressWithoutComplement() =>
+    public static CreateAddressDto GetAddressWithoutComplement() =>
         new()
         {
             Street = "Rua Augusta",
@@ -24,9 +24,9 @@ public class AddressDtoTestDataAttribute : DataAttribute
             State = "São Paulo"
         };
 
-    public static AddressCreateDto GetAddressWithComplement()
+    public static CreateAddressDto GetAddressWithComplement()
     {
-        AddressCreateDto dto = GetAddressWithoutComplement();
+        CreateAddressDto dto = GetAddressWithoutComplement();
         dto.Complement = "Ala C, esquina";
         return dto;
     }

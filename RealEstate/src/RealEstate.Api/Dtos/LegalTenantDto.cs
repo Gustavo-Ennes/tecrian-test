@@ -7,11 +7,9 @@ namespace RealEstate.Api.Dtos;
 public class CreateLegalTenantDto : CreateTenantDto
 {
     public CreateCompanyDto Company { get; set; }
-    public int RepresentantId { get; set; }
 }
 
 public class UpdateLegalTenantDto : UpdateTenantDto
 {
     public UpdateCompanyDto? Company { get; set; }
-    public int? RepresentantId { get; set; }
 }

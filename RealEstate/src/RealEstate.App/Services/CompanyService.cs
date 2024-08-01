@@ -35,7 +35,7 @@ public class CompanyService(
     public async Task<bool> UpdateCompanyAsync(UpdateCompanyDto dto)
     {
         var existingCompany =
-            await _companyRepository.GetByIdAsync(dto.Id)
+            await _companyRepository.GetByIdAsync(dto.Id ?? -1)
             ?? throw new Exception("Company not found");
         var updatedCompany = existingCompany.UpdateFromDto(dto);
 

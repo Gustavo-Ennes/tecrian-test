@@ -1,8 +1,10 @@
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
+using RealEstate.Api.Dtos.Base;
+
 namespace RealEstate.Api.Dtos;
 
-public class AddressCreateDto
+public class CreateAddressDto
 {
     public string Street { get; set; }
     public string Number { get; set; }
@@ -14,9 +16,8 @@ public class AddressCreateDto
     public string Country { get; set; }
 }
 
-public class AddressUpdateDto
+public class UpdateAddressDto : UpdateBaseDto
 {
-    public int Id { get; set; }
     public string? Street { get; set; }
     public string? Number { get; set; }
     public string? Complement { get; set; }

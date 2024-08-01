@@ -35,7 +35,7 @@ public class LegalTenantService(
     public async Task<bool> UpdateTenantAsync(UpdateLegalTenantDto dto)
     {
         LegalTenant existingTenant =
-            await _legalTenantRepository.GetByIdAsync(dto.Id)
+            await _legalTenantRepository.GetByIdAsync(dto.Id ?? -1)
             ?? throw new Exception("Tenant not found");
 
         LegalTenant updatedTenant = existingTenant.UpdateFromDto(dto);

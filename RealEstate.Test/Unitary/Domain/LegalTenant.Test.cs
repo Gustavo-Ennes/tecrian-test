@@ -1,18 +1,19 @@
 using RealEstate.Api.Dtos;
 using RealEstate.Domain.Entities;
 using RealEstate.Domain.Enums;
-using RealEstate.Test.Unitary.Domain.DataAttributes;
+using RealEstate.Test.Unitary.DataAttributes.LegalTenantDto;
+using RealEstate.Test.Unitary.DataAttributes.PersonDto;
 
 namespace RealEstate.Test.Unitary.Domain;
 
 public class LegalTenantUnitaryTests
 {
     private readonly Person representant = Person.FromDto(
-        PersonDtoTestDataAttribute.PersonDtoWithAddressComplement()
+        CreatePersonDtoDataAttribute_Valid.PersonDtoWithAddressComplement()
     );
 
     [Theory]
-    [LegalTenantDtoTestData]
+    [CreateLegalTenantDtoDataAttribute_Valid]
     public void ShouldMapLegalTenant(CreateLegalTenantDto dto)
     {
         LegalTenant legalTenant = LegalTenant.FromDto(dto, representant);
@@ -67,7 +68,8 @@ public class LegalTenantUnitaryTests
     [Fact]
     public void ShouldUpdateLegalTenantFromDto()
     {
-        CreateLegalTenantDto createDto = LegalTenantDtoTestDataAttribute.CreateLegalTenantBaseDto();
+        CreateLegalTenantDto createDto =
+            CreateLegalTenantDtoDataAttribute_Valid.CreateLegalTenantBaseDto();
 
         LegalTenant legalTenant = LegalTenant.FromDto(createDto, representant);
         Document document =

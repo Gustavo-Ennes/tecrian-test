@@ -35,7 +35,7 @@ public class NaturalTenantService(
     public async Task<bool> UpdateTenantAsync(UpdateNaturalTenantDto dto)
     {
         NaturalTenant existingTenant =
-            await _naturalTenantRepository.GetByIdAsync(dto.Id) ?? throw new Exception("Tenant not found");
+            await _naturalTenantRepository.GetByIdAsync(dto.Id ?? -1) ?? throw new Exception("Tenant not found");
 
         NaturalTenant updatedTenant = existingTenant.UpdateFromDto(dto);
         await _naturalTenantRepository.UpdateAsync(updatedTenant);

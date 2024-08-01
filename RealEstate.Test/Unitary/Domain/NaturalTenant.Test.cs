@@ -1,18 +1,19 @@
 using RealEstate.Api.Dtos;
 using RealEstate.Domain.Entities;
 using RealEstate.Domain.Enums;
-using RealEstate.Test.Unitary.Domain.DataAttributes;
+using RealEstate.Test.Unitary.DataAttributes.NaturalTenantDto;
+using RealEstate.Test.Unitary.DataAttributes.PersonDto;
 
 namespace RealEstate.Test.Unitary.Domain;
 
 public class NaturalTenantUnitaryTests
 {
     private readonly Person representant = Person.FromDto(
-        PersonDtoTestDataAttribute.PersonDtoWithAddressComplement()
+        CreatePersonDtoDataAttribute_Valid.PersonDtoWithAddressComplement()
     );
 
     [Theory]
-    [NaturalTenantDtoTestData]
+    [CreateNaturalTenantDtoTestDataAttribute_Valid]
     public void ShouldMapNaturalTenant(CreateNaturalTenantDto dto)
     {
         NaturalTenant naturalTenant = NaturalTenant.FromDto(dto);
@@ -27,34 +28,13 @@ public class NaturalTenantUnitaryTests
         Assert.Equal(naturalTenant.Person.Email, dto.Person.Email);
         Assert.Equal(naturalTenant.Person.Name, dto.Person.Name);
         Assert.Equal(naturalTenant.Person.Phone, dto.Person.Phone);
-        Assert.Equal(
-            naturalTenant.Person.Address?.Street,
-            dto.Person.Address.Street
-        );
-        Assert.Equal(
-            naturalTenant.Person.Address?.Number,
-            dto.Person.Address.Number
-        );
-        Assert.Equal(
-            naturalTenant.Person.Address?.Neighborhood,
-            dto.Person.Address.Neighborhood
-        );
-        Assert.Equal(
-            naturalTenant.Person.Address?.City,
-            dto.Person.Address.City
-        );
-        Assert.Equal(
-            naturalTenant.Person.Address?.PostalCode,
-            dto.Person.Address.PostalCode
-        );
-        Assert.Equal(
-            naturalTenant.Person.Address?.State,
-            dto.Person.Address.State
-        );
-        Assert.Equal(
-            naturalTenant.Person.Address?.Country,
-            dto.Person.Address.Country
-        );
+        Assert.Equal(naturalTenant.Person.Address?.Street, dto.Person.Address.Street);
+        Assert.Equal(naturalTenant.Person.Address?.Number, dto.Person.Address.Number);
+        Assert.Equal(naturalTenant.Person.Address?.Neighborhood, dto.Person.Address.Neighborhood);
+        Assert.Equal(naturalTenant.Person.Address?.City, dto.Person.Address.City);
+        Assert.Equal(naturalTenant.Person.Address?.PostalCode, dto.Person.Address.PostalCode);
+        Assert.Equal(naturalTenant.Person.Address?.State, dto.Person.Address.State);
+        Assert.Equal(naturalTenant.Person.Address?.Country, dto.Person.Address.Country);
         Assert.Equal(naturalTenant.Person.Email, dto.Person.Email);
         Assert.Equal(naturalTenant.Person.Name, dto.Person.Name);
         Assert.Equal(naturalTenant.Person.Phone, dto.Person.Phone);
@@ -67,7 +47,8 @@ public class NaturalTenantUnitaryTests
     [Fact]
     public void ShouldUpdateNaturalTenantFromDto()
     {
-        CreateNaturalTenantDto createDto = NaturalTenantDtoTestDataAttribute.CreateNaturalTenantBaseDto();
+        CreateNaturalTenantDto createDto =
+            CreateNaturalTenantDtoTestDataAttribute_Valid.CreateNaturalTenantBaseDto();
 
         NaturalTenant naturalTenant = NaturalTenant.FromDto(createDto);
         Document document =
@@ -114,34 +95,19 @@ public class NaturalTenantUnitaryTests
         Assert.Equal(naturalTenant?.Person.Address?.Country, createDto.Person.Address.Country);
         Assert.Equal(naturalTenant?.Person.Email, createDto.Person.Email);
         Assert.Equal(naturalTenant?.Person.Phone, createDto.Person.Phone);
-        Assert.Equal(
-            naturalTenant?.Person.Address?.Street,
-            createDto.Person.Address.Street
-        );
-        Assert.Equal(
-            naturalTenant?.Person.Address?.Number,
-            createDto.Person.Address.Number
-        );
+        Assert.Equal(naturalTenant?.Person.Address?.Street, createDto.Person.Address.Street);
+        Assert.Equal(naturalTenant?.Person.Address?.Number, createDto.Person.Address.Number);
         Assert.Equal(
             naturalTenant?.Person.Address?.Neighborhood,
             createDto.Person.Address.Neighborhood
         );
-        Assert.Equal(
-            naturalTenant?.Person.Address?.City,
-            createDto.Person.Address.City
-        );
+        Assert.Equal(naturalTenant?.Person.Address?.City, createDto.Person.Address.City);
         Assert.Equal(
             naturalTenant?.Person.Address?.PostalCode,
             createDto.Person.Address.PostalCode
         );
-        Assert.Equal(
-            naturalTenant?.Person.Address?.State,
-            createDto.Person.Address.State
-        );
-        Assert.Equal(
-            naturalTenant?.Person.Address?.Country,
-            createDto.Person.Address.Country
-        );
+        Assert.Equal(naturalTenant?.Person.Address?.State, createDto.Person.Address.State);
+        Assert.Equal(naturalTenant?.Person.Address?.Country, createDto.Person.Address.Country);
         Assert.Equal(naturalTenant?.Person.Email, createDto.Person.Email);
         Assert.Equal(naturalTenant?.Person.Phone, createDto.Person.Phone);
         Assert.NotNull(naturalTenant?.StartDate);

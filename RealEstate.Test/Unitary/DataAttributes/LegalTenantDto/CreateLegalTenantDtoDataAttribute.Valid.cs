@@ -1,10 +1,11 @@
 using System.Reflection;
 using RealEstate.Api.Dtos;
+using RealEstate.Test.Unitary.DataAttributes.CompanyDto;
 using Xunit.Sdk;
 
-namespace RealEstate.Test.Unitary.Domain.DataAttributes;
+namespace RealEstate.Test.Unitary.DataAttributes.LegalTenantDto;
 
-public class LegalTenantDtoTestDataAttribute : DataAttribute
+public class CreateLegalTenantDtoDataAttribute_Valid : DataAttribute
 {
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
@@ -12,5 +13,5 @@ public class LegalTenantDtoTestDataAttribute : DataAttribute
     }
 
     public static CreateLegalTenantDto CreateLegalTenantBaseDto() =>
-        new() { Company = CompanyDtoTestDataAttribute.CompanyDtoWithAddressComplement() };
+        new() { Company = CreateCompanyDtoDataAttribute_Valid.CompanyDtoWithAddressComplement() };
 }

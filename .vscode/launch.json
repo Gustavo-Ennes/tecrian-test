@@ -8,6 +8,11 @@
             "program": "${workspaceFolder}/RealEstate/bin/Debug/net8.0/RealEstate.dll",
             "args": [],
             "cwd": "${workspaceFolder}/RealEstate"
+        },
+        {
+            "name": "RealEstateTest",
+            "type": "coreclr",
+            "request": "attach"
         }
     ]
 }

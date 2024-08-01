@@ -15,7 +15,7 @@ public class Address
     public string PostalCode { get; set; } = string.Empty;
     public string Country { get; set; } = string.Empty;
 
-    public static Address FromDto(AddressCreateDto dto) =>
+    public static Address FromDto(CreateAddressDto dto) =>
         new()
         {
             Street = dto.Street,
@@ -28,7 +28,7 @@ public class Address
             Country = dto.Country ?? "Brasil"
         };
 
-    public Address UpdateFromDto(AddressUpdateDto dto)
+    public Address UpdateFromDto(UpdateAddressDto dto)
     {
         Street = dto.Street ?? Street;
         Number = dto.Number ?? Number;
@@ -42,7 +42,5 @@ public class Address
         return this;
     }
 
-
-    public override string ToString() => 
-        this.SerializeIndented();
+    public override string ToString() => this.SerializeIndented();
 }

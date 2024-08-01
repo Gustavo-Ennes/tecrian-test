@@ -30,7 +30,7 @@ public class PersonService(IRepository<Person> personRepository) : IPersonServic
     public async Task<bool> UpdatePersonAsync(UpdatePersonDto dto)
     {
         var existingPerson =
-            await _personRepository.GetByIdAsync(dto.Id) ?? throw new Exception("Person not found");
+            await _personRepository.GetByIdAsync(dto.Id ?? -1) ?? throw new Exception("Person not found");
         var updatedPerson = existingPerson.UpdateFromDto(dto);
 
         await _personRepository.UpdateAsync(updatedPerson);

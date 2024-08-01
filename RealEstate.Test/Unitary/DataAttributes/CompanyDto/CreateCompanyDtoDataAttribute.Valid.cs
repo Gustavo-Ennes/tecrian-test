@@ -1,10 +1,12 @@
 using System.Reflection;
 using RealEstate.Api.Dtos;
+using RealEstate.Test.Unitary.DataAttributes.AddressDto;
+using RealEstate.Test.Unitary.DataAttributes.PersonDto;
 using Xunit.Sdk;
 
-namespace RealEstate.Test.Unitary.Domain.DataAttributes;
+namespace RealEstate.Test.Unitary.DataAttributes.CompanyDto;
 
-public class CompanyDtoTestDataAttribute : DataAttribute
+public class CreateCompanyDtoDataAttribute_Valid : DataAttribute
 {
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
@@ -15,20 +17,22 @@ public class CompanyDtoTestDataAttribute : DataAttribute
     public static CreateCompanyDto CompanyDtoWithoutAddressComplement() =>
         new()
         {
-            Address = AddressDtoTestDataAttribute.GetAddressWithoutComplement(),
+            Address = CreateAddressDtoDataAttribute_Valid.GetAddressWithoutComplement(),
             Email = "person@email.com",
             Name = "Comapny x",
             Phone = "98765432154",
-            Representant = PersonDtoTestDataAttribute.PersonDtoWithoutAddressComplement()
+            Cnpj = "12312312312323",
+            Representant = CreatePersonDtoDataAttribute_Valid.PersonDtoWithoutAddressComplement()
         };
 
     public static CreateCompanyDto CompanyDtoWithAddressComplement() =>
         new()
         {
-            Address = AddressDtoTestDataAttribute.GetAddressWithComplement(),
+            Address = CreateAddressDtoDataAttribute_Valid.GetAddressWithComplement(),
             Email = "person@email.com",
             Name = "Company z",
             Phone = "98765432154",
-            Representant = PersonDtoTestDataAttribute.PersonDtoWithoutAddressComplement()
+            Cnpj = "12312312312323",
+            Representant = CreatePersonDtoDataAttribute_Valid.PersonDtoWithoutAddressComplement()
         };
 }

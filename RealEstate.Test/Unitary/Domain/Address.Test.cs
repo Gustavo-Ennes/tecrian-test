@@ -1,14 +1,14 @@
 using RealEstate.Api.Dtos;
 using RealEstate.Domain.Entities;
-using RealEstate.Test.Unitary.Domain.DataAttributes;
+using RealEstate.Test.Unitary.DataAttributes.AddressDto;
 
 namespace RealEstate.Test.Unitary.Domain;
 
 public class AddressUnitaryTests
 {
     [Theory]
-    [AddressDtoTestData]
-    public void ShouldMapAddress(AddressCreateDto dto)
+    [CreateAddressDtoDataAttribute_Valid]
+    public void ShouldMapAddress(CreateAddressDto dto)
     {
         Address address = Address.FromDto(dto);
 
@@ -24,10 +24,10 @@ public class AddressUnitaryTests
     [Fact]
     public void ShouldUpdateAddressFromDto()
     {
-        AddressCreateDto createDto = AddressDtoTestDataAttribute.GetAddressWithComplement();
+        CreateAddressDto createDto = CreateAddressDtoDataAttribute_Valid.GetAddressWithComplement();
 
         Address address = Address.FromDto(createDto);
-        AddressUpdateDto updateDto = new() { Id = 1, Street = "Rua 13" };
+        UpdateAddressDto updateDto = new() { Id = 1, Street = "Rua 13" };
 
         address.UpdateFromDto(updateDto);
 

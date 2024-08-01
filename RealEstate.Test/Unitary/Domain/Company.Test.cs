@@ -1,17 +1,18 @@
 using RealEstate.Api.Dtos;
 using RealEstate.Domain.Entities;
-using RealEstate.Test.Unitary.Domain.DataAttributes;
+using RealEstate.Test.Unitary.DataAttributes.CompanyDto;
+using RealEstate.Test.Unitary.DataAttributes.PersonDto;
 
 namespace RealEstate.Test.Unitary.Domain;
 
 public class CompanyUnitaryTests
 {
     private readonly Person representant = Person.FromDto(
-        PersonDtoTestDataAttribute.PersonDtoWithAddressComplement()
+        CreatePersonDtoDataAttribute_Valid.PersonDtoWithAddressComplement()
     );
-    
+
     [Theory]
-    [CompanyDtoTestData]
+    [CreateCompanyDtoDataAttribute_Valid]
     public void ShouldMapCompany(CreateCompanyDto dto)
     {
         Company company = Company.FromDto(dto, representant);
@@ -44,7 +45,8 @@ public class CompanyUnitaryTests
     [Fact]
     public void ShouldUpdateCompanyFromDto()
     {
-        CreateCompanyDto createDto = CompanyDtoTestDataAttribute.CompanyDtoWithAddressComplement();
+        CreateCompanyDto createDto =
+            CreateCompanyDtoDataAttribute_Valid.CompanyDtoWithAddressComplement();
         Company company = Company.FromDto(createDto, representant);
 
         UpdateCompanyDto updateDto =
@@ -52,7 +54,7 @@ public class CompanyUnitaryTests
             {
                 Id = 1,
                 Name = "Nova Era",
-                Address = new AddressUpdateDto() { State = "Rio Grande do Norte" },
+                Address = new UpdateAddressDto() { State = "Rio Grande do Norte" },
                 Representant = new UpdatePersonDto() { Email = "nova@era.com" }
             };
         company.UpdateFromDto(updateDto);

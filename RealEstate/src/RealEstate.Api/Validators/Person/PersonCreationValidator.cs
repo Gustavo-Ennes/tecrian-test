@@ -1,11 +1,12 @@
 using FluentValidation;
 using RealEstate.Api.Dtos;
+using RealEstate.Api.Validators.Address;
 using RealEstate.Api.Validators.Base;
 using RealEstate.Api.Validators.Functions;
 
 namespace RealEstate.Api.Validators.Person;
 
-public partial class PersonCreationValidator : BaseValidator<CreatePersonDto>
+public class PersonCreationValidator : CreateBaseValidator<CreatePersonDto>
 {
     public PersonCreationValidator()
     {
@@ -14,7 +15,7 @@ public partial class PersonCreationValidator : BaseValidator<CreatePersonDto>
             .WithMessage("Person name shouldn't be null or empty")
             .NotEmpty()
             .WithMessage("Person name shouldn't be null or empty")
-            .Must(ValidatorFunctions.HaveLengthEnought)
+            .Must(ValidatorFunctions.HaveLengthEnought_Person)
             .WithMessage(
                 "person name should have at least 8 characters length and two words minimum."
             );
@@ -32,5 +33,10 @@ public partial class PersonCreationValidator : BaseValidator<CreatePersonDto>
             .WithMessage("person phone shouldn't be null or empty")
             .Must(ValidatorFunctions.BeAValidPhone)
             .WithMessage("person phone must have only numebers and have 10-11 length");
+
+        RuleFor(person => person.Address)
+            .NotNull()
+            .WithMessage("Person should have an address.")
+            .SetInheritanceValidator(validator => validator.Add(new AddressCreationValidator()));
     }
 }

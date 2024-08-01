@@ -7,7 +7,7 @@ using RealEstate.Api.Validators.Person;
 
 namespace RealEstate.Api.Validators.Company;
 
-public class CompanyCreationValidator : BaseValidator<CreateCompanyDto>
+public class CompanyCreationValidator : CreateBaseValidator<CreateCompanyDto>
 {
     public CompanyCreationValidator()
     {
@@ -16,7 +16,7 @@ public class CompanyCreationValidator : BaseValidator<CreateCompanyDto>
             .WithMessage("Company name shouldn't be null or empty")
             .NotEmpty()
             .WithMessage("Company name shouldn't be null or empty")
-            .Must(ValidatorFunctions.HaveLengthEnought)
+            .Must(ValidatorFunctions.HaveLengthEnought_Person)
             .WithMessage(
                 "company name should have at least 8 characters length and two words minimum."
             );
@@ -41,9 +41,13 @@ public class CompanyCreationValidator : BaseValidator<CreateCompanyDto>
             .WithMessage("Cnpj must have only digits and have length of 14.");
 
         RuleFor(company => company.Representant)
+            .NotNull()
+            .WithMessage("Company representant data shouldn't be null or empty")
             .SetInheritanceValidator(validator => validator.Add(new PersonCreationValidator()));
 
         RuleFor(company => company.Address)
+            .NotNull()
+            .WithMessage("Company address shouldn't be null or empty")
             .SetInheritanceValidator(validator => validator.Add(new AddressCreationValidator()));
     }
 }

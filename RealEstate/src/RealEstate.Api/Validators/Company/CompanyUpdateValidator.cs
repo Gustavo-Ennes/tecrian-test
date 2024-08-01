@@ -7,17 +7,16 @@ using RealEstate.Api.Validators.Person;
 
 namespace RealEstate.Api.Validators.Company;
 
-public class CompanyUpdateValidator : BaseValidator<UpdateCompanyDto>
+public class CompanyUpdateValidator : UpdateBaseValidator<UpdateCompanyDto>
 {
     public CompanyUpdateValidator()
+        : base()
     {
         RuleFor(company => company.Name)
             .NotEmpty()
             .WithMessage("Company name shouldn't be null or empty")
-            .Must(ValidatorFunctions.HaveLengthEnought)
-            .WithMessage(
-                "company name should have at least 8 characters length and two words minimum."
-            )
+            .Must(ValidatorFunctions.HaveLengthEnought_Company)
+            .WithMessage("company name should have at least 3 characters.")
             .When(company => company.Name != null);
 
         RuleFor(company => company.Email)

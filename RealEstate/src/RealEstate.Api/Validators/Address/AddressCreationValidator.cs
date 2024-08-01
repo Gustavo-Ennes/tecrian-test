@@ -5,11 +5,10 @@ using RealEstate.Api.Validators.Functions;
 
 namespace RealEstate.Api.Validators.Address;
 
-public class AddressCreationValidator : BaseValidator<AddressCreateDto>
+public class AddressCreationValidator : CreateBaseValidator<CreateAddressDto>
 {
     public AddressCreationValidator()
     {
-        
         RuleFor(address => address.Street)
             .NotNull()
             .WithMessage("Address: Street shouldn't be empty.")

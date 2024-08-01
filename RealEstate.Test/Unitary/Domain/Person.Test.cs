@@ -1,13 +1,13 @@
 using RealEstate.Api.Dtos;
 using RealEstate.Domain.Entities;
-using RealEstate.Test.Unitary.Domain.DataAttributes;
+using RealEstate.Test.Unitary.DataAttributes.PersonDto;
 
 namespace RealEstate.Test.Unitary.Domain;
 
 public class PersonUnitaryTests
 {
     [Theory]
-    [PersonDtoTestData]
+    [CreatePersonDtoDataAttribute_Valid]
     public void ShouldMapPerson(CreatePersonDto dto)
     {
         Person person = Person.FromDto(dto);
@@ -27,7 +27,8 @@ public class PersonUnitaryTests
     [Fact]
     public void ShouldUpdatePersonFromDto()
     {
-        CreatePersonDto createDto = PersonDtoTestDataAttribute.PersonDtoWithAddressComplement();
+        CreatePersonDto createDto =
+            CreatePersonDtoDataAttribute_Valid.PersonDtoWithAddressComplement();
 
         Person person = Person.FromDto(createDto);
         UpdatePersonDto updateDto = new() { Id = 1, Name = "Gustavo Augusto" };

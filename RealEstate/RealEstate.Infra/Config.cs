@@ -16,8 +16,11 @@ public static class ConfigInfrastructureExtension
         IConfiguration configuration
     )
     {
-        services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(configuration["sqlConnection"])
+        services.AddDbContext<RealEstateDbContext>(options =>
+            options.UseSqlServer(
+                configuration["sqlConnection"],
+                sqlOptions => sqlOptions.MigrationsAssembly("RealEstate.Api")
+            )
         );
 
         services.AddScoped<IRepository<LegalTenant>, Repository<LegalTenant>>();

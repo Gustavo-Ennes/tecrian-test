@@ -5,10 +5,10 @@ namespace RealEstate.Infra.Database.Repository;
 public class Repository<TEntity> : IRepository<TEntity>
     where TEntity : class
 {
-    private readonly AppDbContext _dbContext;
+    private readonly RealEstateDbContext _dbContext;
     private readonly DbSet<TEntity> _dbSet;
 
-    public Repository(AppDbContext dbContext)
+    public Repository(RealEstateDbContext dbContext)
     {
         _dbContext = dbContext;
         _dbSet = _dbContext.Set<TEntity>();

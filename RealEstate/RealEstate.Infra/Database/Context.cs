@@ -3,7 +3,7 @@ using RealEstate.Domain.Entities;
 
 namespace RealEstate.Infra.Database;
 
-public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+public class RealEstateDbContext(DbContextOptions<RealEstateDbContext> options) : DbContext(options)
 {
     public DbSet<LegalTenant> LegalTenant { get; set; }
     public DbSet<NaturalTenant> NaturalTenant { get; set; }

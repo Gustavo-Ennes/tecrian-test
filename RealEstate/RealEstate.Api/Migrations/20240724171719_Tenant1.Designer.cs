@@ -11,7 +11,7 @@ using RealEstate.Infra.Database;
 
 namespace RealEstate.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(RealEstateDbContext))]
     [Migration("20240724171719_Tenant1")]
     partial class Tenant1
     {

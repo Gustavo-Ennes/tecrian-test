@@ -7,7 +7,7 @@ using RealEstate.Shared.Dtos;
 namespace RealEstate.Api.Routes;
 
 [ApiController]
-[Route("api/tenants/legal")]
+[Route("api/tenant/legal")]
 public class LegalTenantsController(ILegalTenantService tenantService) : ControllerBase
 {
     private readonly ILegalTenantService _tenantService = tenantService;

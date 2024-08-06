@@ -8,11 +8,11 @@ public class CreateCompanyDtoDataAttribute_Valid : DataAttribute
 {
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
-        yield return new object[] { CompanyDtoWithoutAddressComplement() };
-        yield return new object[] { CompanyDtoWithAddressComplement() };
+        yield return new object[] { Company1() };
+        yield return new object[] { Company2() };
     }
 
-    public static CreateCompanyDto CompanyDtoWithoutAddressComplement() =>
+    public static CreateCompanyDto Company1() =>
         new()
         {
             AddressId = 1,
@@ -23,7 +23,7 @@ public class CreateCompanyDtoDataAttribute_Valid : DataAttribute
             RepresentantId = 1
         };
 
-    public static CreateCompanyDto CompanyDtoWithAddressComplement() =>
+    public static CreateCompanyDto Company2() =>
         new()
         {
             AddressId = 1,

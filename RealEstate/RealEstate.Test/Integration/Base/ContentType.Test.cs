@@ -1,7 +1,7 @@
 namespace RealEstate.Test.Integration.Base;
 
-public class ContentTypeTests(CustomWebApplicationFactory<Program> factory)
-    : BaseIntegration(factory)
+[Collection("LegalTenant")]
+public class ContentTypeTests(CustomWebApplicationFactory<Program> program): BaseIntegration(program)
 {
     [Theory]
     [InlineData("/api/tenant/legal")]

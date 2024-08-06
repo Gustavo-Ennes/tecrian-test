@@ -17,7 +17,7 @@ public class CreatePersonDtoDataAttribute_Invalid : DataAttribute
     //without name
     public static CreatePersonDto InvalidPersonDtoWithoutName()
     {
-        CreatePersonDto dto = CreatePersonDtoDataAttribute_Valid.PersonDtoWithAddressComplement();
+        CreatePersonDto dto = CreatePersonDtoDataAttribute_Valid.Person1();
         dto.Name = null;
         return dto;
     }
@@ -25,7 +25,7 @@ public class CreatePersonDtoDataAttribute_Invalid : DataAttribute
     // withour email
     public static CreatePersonDto InvalidPersonDtoWithoutEmail()
     {
-        CreatePersonDto dto = CreatePersonDtoDataAttribute_Valid.PersonDtoWithAddressComplement();
+        CreatePersonDto dto = CreatePersonDtoDataAttribute_Valid.Person1();
         dto.Email = null;
         return dto;
     }
@@ -33,7 +33,7 @@ public class CreatePersonDtoDataAttribute_Invalid : DataAttribute
     //without phone
     public static CreatePersonDto InvalidPersonDtoWithoutPhone()
     {
-        CreatePersonDto dto = CreatePersonDtoDataAttribute_Valid.PersonDtoWithAddressComplement();
+        CreatePersonDto dto = CreatePersonDtoDataAttribute_Valid.Person1();
         dto.Phone = null;
         return dto;
     }

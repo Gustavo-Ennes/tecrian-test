@@ -8,24 +8,24 @@ public class CreatePersonDtoDataAttribute_Valid : DataAttribute
 {
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
-        yield return new object[] { PersonDtoWithoutAddressComplement() };
-        yield return new object[] { PersonDtoWithAddressComplement() };
+        yield return new object[] { Person1() };
+        yield return new object[] { Person2() };
     }
 
-    public static CreatePersonDto PersonDtoWithoutAddressComplement() =>
+    public static CreatePersonDto Person1() =>
         new()
         {
             AddressId = 1,
-            Email = "person@email.com",
-            Name = "Jhon Doe",
-            Phone = "3216549877"
+            Email = "mary@email.com",
+            Name = "Mary Doe",
+            Phone = "3216549872"
         };
 
-    public static CreatePersonDto PersonDtoWithAddressComplement() =>
+    public static CreatePersonDto Person2() =>
         new()
         {
             AddressId = 1,
-            Email = "person@email.com",
+            Email = "jhon@email.com",
             Name = "Jhon Doe",
             Phone = "3216549877"
         };

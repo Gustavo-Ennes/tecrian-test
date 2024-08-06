@@ -1,21 +1,42 @@
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using RealEstate.Infra.Database;
+using RealEstate.Infra.Profiles;
+
 namespace RealEstate.Test.Integration.Base;
 
-[Collection("Sequential")]
-public class UserEndPointTest(CustomWebApplicationFactory<Program> factory)
+public class BaseIntegration(CustomWebApplicationFactory<Program> factory)
     : IClassFixture<CustomWebApplicationFactory<Program>>
 {
-    private readonly HttpClient _client = factory.CreateClient();
+    protected readonly HttpClient _client = factory.CreateClient();
+    protected readonly IMapper _mapper = AddAutoMapper();
 
-    [Theory]
-    [InlineData("/api/tenant/legal")]
-    [InlineData("/api/tenant/natural")]
-    public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url)
+    protected DbContextOptions<RealEstateDbContext> CreateInMemoryDbContextOptions()
     {
-        var response = await _client.GetAsync(url);
-        response.EnsureSuccessStatusCode();
-        Assert.Equal(
-            "application/json; charset=utf-8",
-            response?.Content?.Headers?.ContentType?.ToString()
-        );
+        return new DbContextOptionsBuilder<RealEstateDbContext>()
+            .UseSqlite("DataSource=:memory:")
+            .Options;
+    }
+
+    protected async Task<RealEstateDbContext> CreateInMemoryDbContext()
+    {
+        var options = CreateInMemoryDbContextOptions();
+        var context = new RealEstateDbContext(options);
+        await context.Database.OpenConnectionAsync();
+        await context.Database.EnsureCreatedAsync();
+        return context;
+    }
+
+    private static IMapper AddAutoMapper()
+    {
+        MapperConfiguration mapperConfig =
+            new(cfg =>
+            {
+                cfg.AddProfile(new RealEstateMapProfile());
+            });
+
+        IMapper mapper = new Mapper(mapperConfig);
+        mapper.ConfigurationProvider.AssertConfigurationIsValid();
+        return mapper;
     }
 }

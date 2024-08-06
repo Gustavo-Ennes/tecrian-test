@@ -4,8 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Domain.Entities;
 using RealEstate.Infra.Database;
 using RealEstate.Infra.Database.Repository;
-using RealEstate.Shared.Dtos;
-using RealEstate.Shared.Profiles;
+using RealEstate.Infra.Profiles;
 
 namespace RealEstate.Infra;
 
@@ -35,10 +34,6 @@ public static class ConfigInfrastructureExtension
 
     public static void ConfigureAutoMapperProfiles(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(BaseProfile<Address, CreateAddressDto>));
-        services.AddAutoMapper(typeof(BaseProfile<Person, CreatePersonDto>));
-        services.AddAutoMapper(typeof(BaseProfile<Company, CreateCompanyDto>));
-        services.AddAutoMapper(typeof(BaseProfile<LegalTenant, CreateLegalTenantDto>));
-        services.AddAutoMapper(typeof(BaseProfile<NaturalTenant, CreateNaturalTenantDto>));
+        services.AddAutoMapper(typeof(RealEstateMapProfile));
     }
 }

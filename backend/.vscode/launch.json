@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Tecrian",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/Tecrian/bin/Debug/net8.0/Tecrian.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Tecrian"
+        },
+        {
+            "name": "TecrianTest",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+<div class="login-container">
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="submitForm()"
+    class="login-conteiner"
+  >
+    <app-text-input
+      label="E-mail"
+      formControlName="email"
+      placeholder="Email"
+      type="email"
+    ></app-text-input>
+    <app-password-input
+      formControlName="password"
+      placeholder="Senha"
+    ></app-password-input>
+    <app-submit-button>Login</app-submit-button>
+  </form>
+</div>
+
+<app-toast *ngIf="errorMessage" [duration]="3000"></app-toast>
+

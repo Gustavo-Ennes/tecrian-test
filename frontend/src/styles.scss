@@ -1,0 +1,14 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #e8f5e9; // Verde claro do fundo
+
+  h1 {
+    color: #2e7d32;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}

@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tecrian", "Tecrian", "{D5CD6633-4B5D-4F86-AD23-50E990FD49D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tecrian.Api", "Tecrian\Tecrian.Api\Tecrian.Api.csproj", "{216235C5-7D70-464B-AC27-05F31C8C3C5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tecrian.App", "Tecrian\Tecrian.App\Tecrian.App.csproj", "{23365CE9-A282-4677-B1D4-BD981CB8B10F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tecrian.Domain", "Tecrian\Tecrian.Domain\Tecrian.Domain.csproj", "{23B841D5-8933-409E-8755-7D88795DA5C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tecrian.Infra", "Tecrian\Tecrian.Infra\Tecrian.Infra.csproj", "{5CACF186-6455-4B04-BCD2-2AA968CE4E82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tecrian.Test", "Tecrian\Tecrian.Test\Tecrian.Test.csproj", "{7127B827-35DC-452C-A9EE-25E1FEDA8F89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tecrian.Shared", "Tecrian\Tecrian.Shared\Tecrian.Shared.csproj", "{46A51343-6316-4EE3-BD99-392F4A9AB711}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{216235C5-7D70-464B-AC27-05F31C8C3C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{216235C5-7D70-464B-AC27-05F31C8C3C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{216235C5-7D70-464B-AC27-05F31C8C3C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{216235C5-7D70-464B-AC27-05F31C8C3C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23365CE9-A282-4677-B1D4-BD981CB8B10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23365CE9-A282-4677-B1D4-BD981CB8B10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23365CE9-A282-4677-B1D4-BD981CB8B10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23365CE9-A282-4677-B1D4-BD981CB8B10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B841D5-8933-409E-8755-7D88795DA5C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B841D5-8933-409E-8755-7D88795DA5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B841D5-8933-409E-8755-7D88795DA5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B841D5-8933-409E-8755-7D88795DA5C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CACF186-6455-4B04-BCD2-2AA968CE4E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CACF186-6455-4B04-BCD2-2AA968CE4E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CACF186-6455-4B04-BCD2-2AA968CE4E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CACF186-6455-4B04-BCD2-2AA968CE4E82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7127B827-35DC-452C-A9EE-25E1FEDA8F89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7127B827-35DC-452C-A9EE-25E1FEDA8F89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7127B827-35DC-452C-A9EE-25E1FEDA8F89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7127B827-35DC-452C-A9EE-25E1FEDA8F89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46A51343-6316-4EE3-BD99-392F4A9AB711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A51343-6316-4EE3-BD99-392F4A9AB711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A51343-6316-4EE3-BD99-392F4A9AB711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A51343-6316-4EE3-BD99-392F4A9AB711}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{216235C5-7D70-464B-AC27-05F31C8C3C5E} = {D5CD6633-4B5D-4F86-AD23-50E990FD49D1}
+		{23365CE9-A282-4677-B1D4-BD981CB8B10F} = {D5CD6633-4B5D-4F86-AD23-50E990FD49D1}
+		{23B841D5-8933-409E-8755-7D88795DA5C0} = {D5CD6633-4B5D-4F86-AD23-50E990FD49D1}
+		{5CACF186-6455-4B04-BCD2-2AA968CE4E82} = {D5CD6633-4B5D-4F86-AD23-50E990FD49D1}
+		{7127B827-35DC-452C-A9EE-25E1FEDA8F89} = {D5CD6633-4B5D-4F86-AD23-50E990FD49D1}
+		{46A51343-6316-4EE3-BD99-392F4A9AB711} = {D5CD6633-4B5D-4F86-AD23-50E990FD49D1}
+	EndGlobalSection
+EndGlobal

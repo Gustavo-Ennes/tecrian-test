@@ -1,0 +1,4 @@
+<div class="toast" *ngIf="toastState?.isVisible">
+  {{ toastState?.message }}
+  <button (click)="closeToast()">Fechar</button>
+</div>

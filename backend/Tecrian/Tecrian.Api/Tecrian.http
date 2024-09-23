@@ -1,0 +1,6 @@
+@Tecrian_HostAddress = http://localhost:5001
+
+GET {{Tecrian_HostAddress}}/api/
+Accept: application/json
+
+###

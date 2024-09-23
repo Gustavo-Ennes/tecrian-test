@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, Input, Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, Input, Injectable } from '@angular/core';
 import { ToastService } from './toast.service';
 
 @Injectable({
@@ -25,6 +24,6 @@ export class ToastComponent {
   }
 
   closeToast() {
-    this.toastState = null; // Ou faça isso através do serviço, se preferir
+    this.toastState = null;
   }
 }

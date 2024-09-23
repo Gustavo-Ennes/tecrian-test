@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { AuthService } from '../guards/auth.service';
+import { AuthService } from '../../guards/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +20,6 @@ export class SignupService {
       tap((response) => {
         this.authService.saveToken(response.token);
       })
-    );;
+    );
   }
 }

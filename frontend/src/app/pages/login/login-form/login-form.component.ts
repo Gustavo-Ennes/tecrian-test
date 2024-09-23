@@ -1,18 +1,18 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { PasswordInputComponent } from '../../components/password-input/password-input.component';
-import { SubmitButtonComponent } from '../../components/submit-button/submit-button.component';
-import { TextInputComponent } from '../../components/text-input/text-input.component';
+import { PasswordInputComponent } from '../../../components/password-input/password-input.component';
+import { SubmitButtonComponent } from '../../../components/submit-button/submit-button.component';
+import { TextInputComponent } from '../../../components/text-input/text-input.component';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
-import { ToastComponent } from '../../components/toast/toast.component';
+import { ToastComponent } from '../../../components/toast/toast.component';
 import { CommonModule } from '@angular/common';
-import { ToastService } from '../../components/toast/toast.service';
+import { ToastService } from '../../../components/toast/toast.service';
 
 @Component({
   selector: 'app-login-form',
@@ -44,6 +44,11 @@ export class LoginFormComponent {
     });
   }
 
+  canLogin() {
+    return this.loginForm.valid;
+  }
+
+
   submitForm() {
     // Chamar o serviço de signup
     this.loginService
@@ -52,7 +57,7 @@ export class LoginFormComponent {
         password: this.loginForm.get('password')?.value,
       })
       .subscribe({
-        next: (response) => {    
+        next: (response) => {
           localStorage.setItem('user', JSON.stringify(response.token));
           this.router.navigate(['/home']);
         },

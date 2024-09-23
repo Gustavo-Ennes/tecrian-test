@@ -14,7 +14,7 @@
       formControlName="password"
       placeholder="Senha"
     ></app-password-input>
-    <app-submit-button>Login</app-submit-button>
+    <app-submit-button [isDisabled]="!canLogin()">Login</app-submit-button>
   </form>
 </div>
 

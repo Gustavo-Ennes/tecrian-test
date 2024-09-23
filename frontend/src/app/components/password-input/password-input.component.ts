@@ -1,10 +1,13 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { PasswordStrengthComponent } from '../password-strength/password-strength.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-password-input',
   templateUrl: './password-input.component.html',
   styleUrls: ['./password-input.component.scss'],
+  imports: [CommonModule, PasswordStrengthComponent],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -16,7 +19,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class PasswordInputComponent implements ControlValueAccessor {
   @Input() label: string = 'Password';
+  @Input() passwordStrenght: boolean = false;
   password: string = '';
+
 
   onChange = (value: string) => {};
   onTouched = () => {};

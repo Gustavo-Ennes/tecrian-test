@@ -13,13 +13,17 @@
     ></app-text-input>
     <app-password-input
       formControlName="password"
-      place older="password"
+      placeholder="password"
     ></app-password-input>
     <app-password-input
       label="Confirm password"
       formControlName="confirmPassword"
       placeholder="Confirm password"
+      [passwordStrenght]="true"
     ></app-password-input>
-    <app-submit-button>Create account</app-submit-button>
+    <app-submit-button [isDisabled]="!canSubmit()">Create account</app-submit-button>
   </form>
 </div>
+
+<app-toast *ngIf="errorMessage" [duration]="3000"></app-toast>
+

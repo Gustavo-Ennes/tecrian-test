@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { PasswordInputComponent } from '../../components/password-input/password-input.component';
-import { TextInputComponent } from '../../components/text-input/text-input.component';
-import { SubmitButtonComponent } from '../../components/submit-button/submit-button.component';
+import { PasswordInputComponent } from '../../../components/password-input/password-input.component';
+import { TextInputComponent } from '../../../components/text-input/text-input.component';
+import { SubmitButtonComponent } from '../../../components/submit-button/submit-button.component';
 import {
   FormBuilder,
   FormGroup,
@@ -10,6 +10,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignupService } from '../signup-page.service';
+import { ToastService } from '../../../components/toast/toast.service';
+import { ToastComponent } from '../../../components/toast/toast.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup-form',
@@ -17,19 +20,23 @@ import { SignupService } from '../signup-page.service';
   styleUrls: ['./signup-form.component.scss'],
   imports: [
     ReactiveFormsModule,
+    CommonModule,
     PasswordInputComponent,
     TextInputComponent,
     SubmitButtonComponent,
+    ToastComponent,
   ],
   standalone: true,
 })
 export class SignupFormComponent {
   signupForm: FormGroup;
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private signupService: SignupService
+    private signupService: SignupService,
+    private toastService: ToastService
   ) {
     this.signupForm = this.fb.group({
       name: ['', Validators.required],
@@ -39,12 +46,19 @@ export class SignupFormComponent {
     });
   }
 
+  canSubmit() {
+    return (
+      this.signupForm.valid &&
+      this.signupForm.get('password')?.value ===
+        this.signupForm.get('confirmPassword')?.value
+    );
+  }
+
   submitForm() {
     if (
       this.signupForm.get('password')?.value ===
       this.signupForm.get('confirmPassword')?.value
     ) {
-      // Chamar o serviço de signup
       this.signupService
         .signup({
           name: this.signupForm.get('name')?.value,
@@ -57,8 +71,8 @@ export class SignupFormComponent {
             this.router.navigate(['/non-verified']);
           },
           error: (error) => {
-            console.error('Erro ao criar o usuário:', error);
-            alert('Erro ao criar o usuário. Tente novamente.');
+            this.errorMessage = error.message;
+            this.toastService.showToast(`Signup error: ${error.message}`);
           },
         });
     } else {
